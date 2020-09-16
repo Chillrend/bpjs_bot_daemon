@@ -7,12 +7,16 @@ module.exports = {
             }
         );
     },
-
     stripAndSplitStr: function (string) {
         let strip = string.replace(/[^\w\s]/gi, '');
         return strip.split(" ");
     },
-
+    stripAndSplitStrWithCommas: function(string){
+        let split = string.split(',');
+        return split.map(str => {
+            return str.trim();
+        })
+    },
     getNightmaresList: async function(args, nmRef, message){
 
         for (let i = 0; i < args.length; i++) {
@@ -87,7 +91,6 @@ module.exports = {
 
         return trueNightmare;
     },
-
     evalAttribute: function (attribute, client) {
         switch (attribute) {
             case 1:
@@ -106,12 +109,10 @@ module.exports = {
                 return undefined;
         }
     },
-
     findNeedle: function (needle, haystack) {
         let query = this.strToTitle(needle);
         return haystack.filter(item => item.indexOf(query) >= 0);
     },
-
     getJobFromWeapon: function (client, weaponObject) {
         let maxWepValue = 0, maxWeaponName = "";
 
