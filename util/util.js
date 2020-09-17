@@ -17,6 +17,21 @@ module.exports = {
             return str.trim();
         })
     },
+    getNightmare: function (nmRef, nmArray, message) {
+
+        return nmArray.map(nms => {
+
+            let searchArray = nms.split(' ');
+
+            return this.getNightmaresList(searchArray, nmRef, message).then(nightmares => {
+                if(nightmares.length < 1){
+                    return undefined;
+                }
+
+                return this.getTrueNightmare(searchArray, nightmares);
+            })
+        })
+    },
     getNightmaresList: async function(args, nmRef, message){
 
         for (let i = 0; i < args.length; i++) {

@@ -63,6 +63,9 @@ module.exports = {
         const config = require('../bot.config.json');
         const util = require('../util/util');
 
+        const string = require('../util/string.json');
+        const locStr = string.en;
+
         const db = FBAdmin.firestore();
         const nmRef = db.collection('nightmares');
 
@@ -138,9 +141,8 @@ module.exports = {
                     /*
                     Now, type nightmares in your inventory that you think is important, type them separated by comma. If you don't remember its full name, you can type the part that you remember. but only the front part that will be recognized. (Ex. Shadowlord. If you type 'shadow', it's valid, but if you type 'lord', it's invalid.)
                      */
-                    m.channel.send("Sekarang, ketik nightmare yang menurutmu penting dan ada di inventory mu, **dipisahkan dengan koma**.\n" +
-                        "Jika tidak hafal dengan namanya, kamu dapat menulisnya dengan bagian pertama yang kamu ingat saja (misal `Shadowlord` bisa digantikan dengan `shadow` saja, namun tidak bisa dengan `lord` saja");
-                    iterator = "NIGHTMARE_SELECTION"
+                    m.channel.send(locStr.message_type_nm)
+                    iterator = "NIGHTMARE_SELECTION";
 
                 }else if(iterator === "NIGHTMARE_SELECTION"){
                     let nmArray = m.content.split(',');

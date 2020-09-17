@@ -1,7 +1,7 @@
 module.exports = {
     name: "editgear",
     description: "Edit or update your gear in the archive",
-    usage: "`<geartype>` **(geartype: weapon or wp to edit weapon, elements or ele to edit elements, nightmare or nm to edit nightmares)**",
+    usage: "`<geartype>` **(geartype: `weapon` or `wp` to edit weapon, `elements` or `ele` to edit elements, `nightmare` or `nm` to edit nightmares, `summon` to edit your summon job)**",
     localUtil: {
         evalWeap: function (dmChannel, guildmate, localString) {
 
@@ -71,6 +71,12 @@ module.exports = {
                 var weapObject;
                 if (args[0] === "weapon" || args[0] === "wp") {
                     weapObject = this.localUtil.evalWeap(dmChannel, originalGear, locStr);
+                }else if(args[0] === "element" || args[0] === "ele"){
+                    dmChannel.send(locStr.message_type_ele);
+                }else if(args[0] === "nightmare" || args[0] === "nm"){
+                    dmChannel.send(locStr.message_type_nm);
+                }else if(args[0] === "summon"){
+                    dmChannel.send(locStr.message_type_summon_job);
                 }
 
                 collector.on('collect', m => {
@@ -90,6 +96,78 @@ module.exports = {
                         Object.keys(modifiedGear.weapon).forEach((key, index) => {
                             modifiedGear.weapon[key] = weapObject[key];
                         });
+
+                        if(!_.isEqual(originalGear, modifiedGear)){
+                            this.localUtil.submitGear(modifiedGear, m, guildRef, collector, locStr);
+                        }else {
+                            m.channel.send(locStr.err_no_changes);
+                        }
+                    }
+                    else if(args[0] === "element" || args[0] === "ele"){
+                        let eleArr = util.stripAndSplitStrWithCommas(m.content);
+                        let eleObj = {fire: originalGear.element.fire, water: originalGear.element.water, wind: originalGear.element.wind};
+
+
+                        if(eleArr.length !== Object.keys(eleObj).length){
+                            m.channel.send(`${locStr.err_invalid_ele_count}`);
+                            return;
+                        }
+
+                        Object.keys(eleObj).forEach((key, index) => {
+                            eleObj[key] = isNaN(parseInt(eleArr[index])) ? eleObj[key] : parseInt(eleArr[index]);
+                            modifiedGear.element[key] = eleObj[key];
+                        })
+
+                        if(!_.isEqual(originalGear, modifiedGear)){
+                            this.localUtil.submitGear(modifiedGear, m, guildRef, collector, locStr);
+                        }else {
+                            m.channel.send(locStr.err_no_changes);
+                        }
+                    }
+                    else if(args[0] === "nightmare" || args[0] === "nm"){
+                        let nmArray = util.stripAndSplitStrWithCommas(m.content);
+
+                        if(nmArray.length < 1){
+                            m.channel.send(`${locStr.err_invalid_nm_count}`);
+                            return;
+                        }
+
+                        let nmRef = db.collection('nightmares');
+                        let result = util.getNightmare(nmRef, nmArray, m);
+
+                        Promise.all(result).then(nm => {
+                            let validNightmares= [];
+                            nm.map(nightmare => {
+                                if(typeof nightmare != 'undefined') {
+                                    validNightmares.push(nightmare.name);
+                                }
+                            })
+
+                            if(validNightmares.length < 1){
+                                m.channel.send('No nightmare(s) found based on your search query, please try again');
+                                return;
+                            }
+
+                            modifiedGear.nightmares = validNightmares;
+                            m.channel.send(`We found ${validNightmares.join(' - ')}`);
+
+                            if(!_.isEqual(originalGear, modifiedGear)){
+                                this.localUtil.submitGear(modifiedGear, m, guildRef, collector, locStr);
+                            }else {
+                                m.channel.send(locStr.err_no_changes);
+                            }
+                        });
+                    }
+                    else if(args[0] === "summon"){
+                        let nightmare = util.findNeedle(m.content.trim(), originalGear.nightmares);
+
+                        if(nightmare.length < 1){
+                            m.channel.send(`There is no nightmare matching ${m.content} in your nightmare list, please try again`);
+                            return;
+                        }
+
+                        modifiedGear.summonJob = nightmare[0];
+                        m.channel.send(`You are summoning ${modifiedGear.summonJob} in the colosseum, please remember your nightmare name and don't be late!`);
 
                         if(!_.isEqual(originalGear, modifiedGear)){
                             this.localUtil.submitGear(modifiedGear, m, guildRef, collector, locStr);
