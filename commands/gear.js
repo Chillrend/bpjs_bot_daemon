@@ -76,7 +76,7 @@ module.exports = {
 
                 //Start building embeds
                 let dsEmbeds = new Discord.MessageEmbed();
-                dsEmbeds.setTitle(`Member\u2000 ${client.emojis.cache.get(job.emojiId)}  ${users.username}`);
+                dsEmbeds.setTitle(`Member\u2000 ${client.emojis.cache.get(job.emojiId)}  ${users.username} Gear summary`);
                 dsEmbeds.setDescription(`${users.username}, Tempest's ${job.job}`);
                 dsEmbeds.setColor(7506394);
 
