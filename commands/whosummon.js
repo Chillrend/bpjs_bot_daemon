@@ -1,7 +1,7 @@
 module.exports = {
-    name: 'whoowns',
-    description: 'See who owns the specified nightmare in the guild',
-    usage: '`whoowns` `<nightmare name>',
+    name: 'whosummon',
+    description: 'See who summons the specified nightmare in the guild',
+    usage: '`whosummon` `<nightmare name>',
     execute(message, args, client, FBAdmin) {
         const util = require('../util/util');
         const Discord = require('discord.js');
@@ -26,11 +26,11 @@ module.exports = {
             let nightmare = util.getTrueNightmare(args, nightmares);
 
             let guildRef = db.collection('guildmates');
-            let queries = guildRef.where('nightmares', 'array-contains', nightmare.name);
+            let queries = guildRef.where('summonJob', '==', nightmare.name);
 
             queries.get().then(guildmate => {
                 if(guildmate.empty){
-                    message.channel.send(`None of our members own ${nightmare.name}!`);
+                    message.channel.send(`None of our members are summoning ${nightmare.name}!`);
                     return;
                 }
 
@@ -40,11 +40,11 @@ module.exports = {
                 });
 
                 if(membersNickname.length < 1){
-                    message.channel.send(`None of our members own ${nightmare.name}!`);
+                    message.channel.send(`None of our members are summoning ${nightmare.name}!`);
                     return;
                 }
 
-                message.channel.send(`**This following members own ${nightmare.name}:**\n${membersNickname.join(', ')}`);
+                message.channel.send(`**This following member(s) summons ${nightmare.name} in the colosseum:**\n${membersNickname.join(', ')}`);
 
             })
         })
