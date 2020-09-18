@@ -17,7 +17,7 @@ module.exports = {
 
         util.getNightmaresList(args, nmRef, message).then(nightmares => {
             if(nightmares.length < 1){
-                message.channel.send('No nightmares matched ' + joinedArgs + ' found!')
+                message.channel.send('No nightmares matched ' + args.join(' ') + ' found!')
                 return
             }
 

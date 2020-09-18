@@ -2397,14 +2397,14 @@
     }
   },
   {
-    "name": "Drizella, the Jealous Serpent",
+    "name": "Drizella, The Jealous Serpent",
     "shortName": "Drizella, the Jealou",
     "attribute": 2,
     "mstId": 553,
     "resourceName": "0553",
     "searchString": [
       "Drizella",
-      "the",
+      "The",
       "Jealous",
       "Serpent"
     ],
@@ -2851,14 +2851,14 @@
     }
   },
   {
-    "name": "Fina, the Loyal Falsehood",
+    "name": "Fina, The Loyal Falsehood",
     "shortName": "Fina, the Loyal Fals",
     "attribute": 2,
     "mstId": 583,
     "resourceName": "0583",
     "searchString": [
       "Fina",
-      "the",
+      "The",
       "Loyal",
       "Falsehood"
     ],
@@ -2893,14 +2893,14 @@
     }
   },
   {
-    "name": "Digitalis, the Undertaker",
+    "name": "Digitalis, The Undertaker",
     "shortName": "Digitalis, the Under",
     "attribute": 2,
     "mstId": 639,
     "resourceName": "0639",
     "searchString": [
       "Digitalis",
-      "the",
+      "The",
       "Undertaker"
     ],
     "evolvedMstId": 640,
@@ -3174,14 +3174,14 @@
     }
   },
   {
-    "name": "Esse, the Investigator",
+    "name": "Esse, The Investigator",
     "shortName": "Esse, the Investigat",
     "attribute": 1,
     "mstId": 771,
     "resourceName": "0771",
     "searchString": [
       "Esse",
-      "the",
+      "The",
       "Investigator"
     ],
     "evolvedMstId": 772,
@@ -3356,14 +3356,14 @@
     }
   },
   {
-    "name": "Cecilia, the Crimson Banisher",
+    "name": "Cecilia, The Crimson Banisher",
     "shortName": "Cecilia, the Crimson",
     "attribute": 1,
     "mstId": 979,
     "resourceName": "0979",
     "searchString": [
       "Cecilia",
-      "the",
+      "The",
       "Crimson",
       "Banisher"
     ],
@@ -3591,6 +3591,162 @@
         "skillDescription": "Massively increases P.ATK of surviving allies.",
         "skillDuration": 0,
         "skillPreparationTime": 25,
+        "skillSPCost": 50
+      }
+    }
+  },
+  {
+    "name": "Crab",
+    "shortName": "Crab",
+    "attribute": 1,
+    "mstId": 2490,
+    "resourceName": "2490",
+    "searchString": [
+      "Crab"
+    ],
+    "evolvedMstId": 2491,
+    "evolvedResourceName": "2491",
+    "rarity": 5,
+    "isEvolvable": true,
+    "skill": {
+      "gvg": {
+        "preEvo": {
+          "skillName": "Enchanted Armor (I)",
+          "skillDescription": "Increases DEF of all surviving allies in the vanguard.\\nApplies to both P.DEF and M.DEF.",
+          "skillDuration": 0,
+          "skillPreparationTime": 60,
+          "skillSPCost": 200
+        },
+        "postEvo": {
+          "skillName": "Enchanted Armor (II)",
+          "skillDescription": "Greatly increases DEF of all surviving allies in the vanguard.\\nApplies to both P.DEF and M.DEF.",
+          "skillDuration": 0,
+          "skillPreparationTime": 50,
+          "skillSPCost": 200
+        }
+      },
+      "pve": {
+        "skillName": "Enchanted Armor (II)",
+        "skillDescription": "Greatly increases DEF of all surviving allies.\\nApplies to both P.DEF and M.DEF.",
+        "skillDuration": 0,
+        "skillPreparationTime": 15,
+        "skillSPCost": 50
+      }
+    }
+  },
+  {
+    "name": "Octopus",
+    "shortName": "Octopus",
+    "attribute": 1,
+    "mstId": 2492,
+    "resourceName": "2492",
+    "searchString": [
+      "Octopus"
+    ],
+    "evolvedMstId": 2493,
+    "evolvedResourceName": "2493",
+    "rarity": 5,
+    "isEvolvable": true,
+    "skill": {
+      "gvg": {
+        "preEvo": {
+          "skillName": "Victorious Melody (I)",
+          "skillDescription": "Increases ATK of all surviving allies in the vanguard.\\nApplies to both P.ATK and M.ATK.",
+          "skillDuration": 0,
+          "skillPreparationTime": 70,
+          "skillSPCost": 200
+        },
+        "postEvo": {
+          "skillName": "Victorious Melody (II)",
+          "skillDescription": "Greatly increases ATK of all surviving allies in the vanguard.\\nApplies to both P.ATK and M.ATK.",
+          "skillDuration": 0,
+          "skillPreparationTime": 60,
+          "skillSPCost": 200
+        }
+      },
+      "pve": {
+        "skillName": "Victorious Melody (II)",
+        "skillDescription": "Greatly increases ATK of all surviving allies.\\nApplies to both P.ATK and M.ATK.",
+        "skillDuration": 0,
+        "skillPreparationTime": 20,
+        "skillSPCost": 50
+      }
+    }
+  },
+  {
+    "name": "Squid",
+    "shortName": "Squid",
+    "attribute": 1,
+    "mstId": 2494,
+    "resourceName": "2494",
+    "searchString": [
+      "Squid"
+    ],
+    "evolvedMstId": 2495,
+    "evolvedResourceName": "2495",
+    "rarity": 5,
+    "isEvolvable": true,
+    "skill": {
+      "gvg": {
+        "preEvo": {
+          "skillName": "Infernal Fairy Magic (I)",
+          "skillDescription": "Reduces the SP cost of ally fire skills.",
+          "skillDuration": 80,
+          "skillPreparationTime": 80,
+          "skillSPCost": 200
+        },
+        "postEvo": {
+          "skillName": "Infernal Fairy Magic (II)",
+          "skillDescription": "Greatly reduces the SP cost of ally fire skills.",
+          "skillDuration": 90,
+          "skillPreparationTime": 70,
+          "skillSPCost": 200
+        }
+      },
+      "pve": {
+        "skillName": "Infernal Fairy Magic (II)",
+        "skillDescription": "Greatly reduces the SP cost of ally fire skills.",
+        "skillDuration": 20,
+        "skillPreparationTime": 10,
+        "skillSPCost": 50
+      }
+    }
+  },
+  {
+    "name": "Ufo",
+    "shortName": "UFO",
+    "attribute": 1,
+    "mstId": 2496,
+    "resourceName": "2496",
+    "searchString": [
+      "Ufo"
+    ],
+    "evolvedMstId": 2497,
+    "evolvedResourceName": "2497",
+    "rarity": 6,
+    "isEvolvable": true,
+    "skill": {
+      "gvg": {
+        "preEvo": {
+          "skillName": "The Bell Sounds a Wildfire (I)",
+          "skillDescription": "Increases the effectiveness of fire weapon skills, but also increases enemy water damage.",
+          "skillDuration": 80,
+          "skillPreparationTime": 70,
+          "skillSPCost": 200
+        },
+        "postEvo": {
+          "skillName": "The Bell Sounds a Wildfire (II)",
+          "skillDescription": "Greatly increases the effectiveness of fire weapon skills, but also increases enemy water damage.",
+          "skillDuration": 90,
+          "skillPreparationTime": 60,
+          "skillSPCost": 200
+        }
+      },
+      "pve": {
+        "skillName": "The Bell Sounds a Wildfire (II)",
+        "skillDescription": "Greatly increases the effectiveness of fire weapon skills, but also increases enemy water damage.",
+        "skillDuration": 20,
+        "skillPreparationTime": 10,
         "skillSPCost": 50
       }
     }

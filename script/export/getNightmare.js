@@ -17,15 +17,13 @@ for (let i = 0; i < card.length; i++) {
 
         let nightmare = {};
 
-        nightmare.name = translate.latinize(card[i].name);
+        nightmare.name = util.strToTitle(translate.latinize(card[i].name));
         nightmare.shortName = card[i].shortName;
         nightmare.attribute = card[i].attribute;
         nightmare.mstId = card[i].cardMstId;
         nightmare.resourceName = card[i].resourceName;
 
-        let translatedNm = translate.latinize(card[i].name);
-
-        nightmare.searchString = util.stripAndSplitStr(translatedNm);
+        nightmare.searchString = util.stripAndSplitStr(nightmare.name);
 
         let evo = _.find(evo_card, {"cardMstId": card[i].cardMstId})
         if(evo !== undefined){
