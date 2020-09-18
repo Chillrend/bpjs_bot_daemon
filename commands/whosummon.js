@@ -1,7 +1,7 @@
 module.exports = {
     name: 'whosummon',
     description: 'See who summons the specified nightmare in the guild',
-    usage: '`whosummon` `<nightmare name>',
+    usage: `<nightmare name>`,
     execute(message, args, client, FBAdmin) {
         const util = require('../util/util');
         const Discord = require('discord.js');

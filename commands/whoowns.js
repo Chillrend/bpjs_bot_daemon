@@ -1,7 +1,7 @@
 module.exports = {
     name: 'whoowns',
     description: 'See who owns the specified nightmare in the guild',
-    usage: '`whoowns` `<nightmare name>',
+    usage: '`<nightmare name>',
     execute(message, args, client, FBAdmin) {
         const util = require('../util/util');
         const Discord = require('discord.js');
