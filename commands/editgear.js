@@ -48,6 +48,7 @@ module.exports = {
 
         if (args.length < 1) {
             message.channel.send("Please provide the correct arguments for the command: " + this.usage);
+            return;
         }
 
         const query = guildRef.doc(message.author.id).get();
